@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!!</title>
+    </head>
+    <body>
+        <h1>List of people:</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+            </tr>
+            {{range .People}}
+            <tr>
+                <td>{{.Name}}</td>
+                <td>{{.Surname}}</td>
+                <td>{{.Age}}</td>
+            </tr>
+            {{end}}
+        </table>
+        
+        <hr>
+
+        <h1>List of phones:</h1>
+        <table>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+            </tr>
+            {{range .CellPhones}}
+            <tr>
+                <td>{{.Brand}}</td>
+                <td>{{.Model}}</td>
+            </tr>
+            {{end}}
+        </table>
+    </body>
+</html>
