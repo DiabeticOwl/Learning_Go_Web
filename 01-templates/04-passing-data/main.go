@@ -1,3 +1,4 @@
+// Program that will print a html template with data passed.
 package main
 
 import (

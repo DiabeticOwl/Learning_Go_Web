@@ -1,3 +1,5 @@
+// Program that will print a html template with data passed.
+// Here a variable will be instantiated in the template file.
 package main
 
 import (
