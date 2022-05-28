@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Academic Year</th>
+        <th>Term</th>
+        <th>Course Number</th>
+        <th>Course Name</th>
+        <th>Course Units</th>
+    </tr>
+    {{range .}}
+        {{/* It is needed to initialize the $acaYear and $term variables in
+             order to repeat their values in the succeeding pipelines. */}}
+        
+        {{$acaYear := .AcaYear}}
+        
+        {{/* With will run the code inside it if the pipeline is not empty
+             and dot will be the pipeline's value.*/}}
+        
+        {{with .Fall}}
+            {{$term := .Term}}
+            {{range .Courses}}
+                <tr>
+                    <td>{{$acaYear}}</td>
+                    <td>{{$term}}</td>
+                    <td>{{.Number}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Units}}</td>
+                </tr>
+            {{end}}
+        {{end}}
+        
+        {{with .Spring}}
+            {{$term := .Term}}
+            {{range .Courses}}
+                <tr>
+                    <td>{{$acaYear}}</td>
+                    <td>{{$term}}</td>
+                    <td>{{.Number}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Units}}</td>
+                </tr>
+            {{end}}
+        {{end}}
+        
+        {{with .Summer}}
+            {{$term := .Term}}
+            {{range .Courses}}
+                <tr>
+                    <td>{{$acaYear}}</td>
+                    <td>{{$term}}</td>
+                    <td>{{.Number}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Units}}</td>
+                </tr>
+            {{end}}
+        {{end}}
+    {{end}}
+</table>
+</body>
+</html>
