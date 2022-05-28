@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!!</title>
+    </head>
+    <body>
+        <h1>List of people:</h1>
+        {{/* Here the template defined as "people" is used
+             with the context of the slice of structs of
+             "People" type. */}}
+        {{template "people" .People}}
+        
+        <hr>
+
+        <h1>List of phones:</h1>
+        {{/* Here the template defined as "phones" is used
+             with the context of the slice of structs of
+             "CellPhones" type. */}}
+        {{template "phones" .CellPhones}}
+    </body>
+</html>

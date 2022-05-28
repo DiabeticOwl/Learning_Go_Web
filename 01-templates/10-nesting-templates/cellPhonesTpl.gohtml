@@ -1,0 +1,14 @@
+{{define "phones"}}
+    <table>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.Brand}}</td>
+            <td>{{.Model}}</td>
+        </tr>
+        {{end}}
+    </table>
+{{end}}
