@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!!</title>
+    </head>
+    <body>
+        <h1>List of people:</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Initials</th>
+                <th>Formula: (Age^2)/2 + 5</th>
+            </tr>
+            {{range .}}
+                <tr>
+                    <td>{{tu .Name}}</td>
+                    <td>{{tu .Surname}}</td>
+                    <td>{{.Age}}</td>
+                    <td>{{.Name | ff | tu}}</td>
+                    <td>{{.Age | float | sq | dTwo | aFive}}</td>
+                </tr>
+            {{end}}
+        </table>
+    </body>
+</html>
