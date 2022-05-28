@@ -1,5 +1,6 @@
-**/*.mod
-
 node_modules/
 bower_components/
 .tmp
+
+*.mod
+*.sum
