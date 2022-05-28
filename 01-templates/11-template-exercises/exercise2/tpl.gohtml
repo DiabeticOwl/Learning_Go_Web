@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotels</title>
+</head>
+<body>
+    <h1>Hotels</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Region</th>
+        </tr>
+        {{range $id, $h := .}}
+            {{/* Since the dot will be each hotel there is no need to use the
+                 $h variable but it is necessary to initialize it due to the
+                 extraction of the index.  */}}
+            <tr>
+                <td>{{$id}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Address}}</td>
+                <td>{{.City}}</td>
+                <td>{{.Region}}</td>
+            </tr>
+        {{end}}
+    </table>
+</body>
+</html>
