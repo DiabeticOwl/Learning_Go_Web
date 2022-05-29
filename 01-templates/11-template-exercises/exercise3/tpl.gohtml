@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV File</title>
+</head>
+<body>
+    <h1>CSV File</h1>
+    <table>
+        {{ range $i, $r := . }}
+            {{ if eq $i 0 }}
+                <tr>
+                    <th>Index</th>
+                    {{ range . }}
+                        <th>{{ . }}</th>
+                    {{ end }}
+                </tr>
+            {{ else }}
+                <tr>
+                    <td>{{ $i }}</td>
+                    {{ range . }}
+                        <td>{{ . }}</td>
+                    {{ end }}
+                </tr>
+            {{ end }}
+        {{ end }}
+    </table>
+</body>
+</html>
