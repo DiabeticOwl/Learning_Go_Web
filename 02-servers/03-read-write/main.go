@@ -1,5 +1,6 @@
 // Program that enables a "tcp" server in the port "8080".
-// When the server receives a connection it prints some messages.
+// When the server receives a connection it listens from the
+// user input for 10 seconds before the connection is timed out.
 package main
 
 import (
