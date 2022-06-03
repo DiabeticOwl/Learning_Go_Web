@@ -1,0 +1,31 @@
+{{ define "peopleForm" }}
+    {{ if . }}
+        <h1>Data Passed:</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>{{ index .name 0 }}</td>
+                <td>{{ index .surname 0 }}</td>
+                <td>{{ index .age 0 }}</td>
+            </tr>
+        </table>
+        <hr>
+    {{ end }}
+
+    <form action="/" method="POST">
+        <label for="nameInp">Name:</label>
+        <input type="text" name="name" id="nameInp" placeholder="Name" autocomplete="off">
+
+        <label for="surnameInp">Surname:</label>
+        <input type="text" name="surname" id="surnameInp" placeholder="Surname" autocomplete="off">
+
+        <label for="ageInp">Age:</label>
+        <input type="number" name="age" id="ageInp" placeholder="Age" autocomplete="off">
+
+        <input type="submit" name="submit-button" value="Enter Person Details">
+    </form>
+{{ end }}
