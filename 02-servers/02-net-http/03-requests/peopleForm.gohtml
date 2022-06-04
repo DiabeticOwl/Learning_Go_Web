@@ -1,0 +1,66 @@
+{{ define "peopleForm" }}
+    {{ if .FormData }}
+        <h1>Data Passed:</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>{{ index .FormData.name 0 }}</td>
+                <td>{{ index .FormData.surname 0 }}</td>
+                <td>{{ index .FormData.age 0 }}</td>
+            </tr>
+        </table>
+
+        <hr>
+    {{ end }}
+
+    {{ if .Method }} <h2>Method: {{ .Method }}</h2> {{ end }}
+    {{ if .Host }} <h2>Host: {{ .Host }}</h2> {{ end }}
+    {{ if .ContentLength }} <h2>ContentLength: {{ .ContentLength }}</h2> {{ end }}
+
+    {{ if .URL }}
+        <h2>URL:</h2>    
+        <ul>
+            <li>Scheme: {{ .URL.Scheme }}</li>
+            <li>Opaque: {{ .URL.Opaque }}</li>
+            <li>Host: {{ .URL.Host }}</li>
+            <li>Path: {{ .URL.Path }}</li>
+            <li>RawPath: {{ .URL.RawPath }}</li>
+            <li>ForceQuery: {{ .URL.ForceQuery }}</li>
+            <li>RawQuery: {{ .URL.RawQuery }}</li>
+            <li>Fragment: {{ .URL.Fragment }}</li>
+        </ul>
+    {{ end }}
+
+    {{ if .Header }}
+        <h2>Header:</h2>
+        <ul>
+            {{ range $key, $value := .Header }}
+                <li>{{ $key }}:</li>
+                <ul>
+                    {{ range $value }}
+                        <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+    <hr>
+
+    <form action="/" method="POST">
+        <label for="nameInp">Name:</label>
+        <input type="text" name="name" id="nameInp" placeholder="Name" autocomplete="off">
+
+        <label for="surnameInp">Surname:</label>
+        <input type="text" name="surname" id="surnameInp" placeholder="Surname" autocomplete="off">
+
+        <label for="ageInp">Age:</label>
+        <input type="number" name="age" id="ageInp" placeholder="Age" autocomplete="off">
+
+        <input type="submit" name="submit-button" value="Enter Person Details">
+    </form>
+{{ end }}
