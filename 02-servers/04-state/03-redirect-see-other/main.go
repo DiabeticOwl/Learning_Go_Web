@@ -36,12 +36,12 @@ func bar(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Your request method at bar is:", r.Method)
 
 	// This action can be performed by using:
-	// `http.Redirect(http.ResponseWriter, *http.Request, location. status-code)`
+	// `http.Redirect(http.ResponseWriter, *http.Request, location, status-code)`
 	w.Header().Set("Location", "/")
 	w.WriteHeader(http.StatusSeeOther)
 }
 
-// foo will print the received method and execute a template with a form.
+// foo will print the received method.
 func foo(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Your request method at foo is:", r.Method)
 }
