@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+    <body>
+        <form method="post">
+            <input type="email" name="username" placeholder="email"><br>
+            <input type="text" name="firstname" placeholder="first name"><br>
+            <input type="text" name="lastname" placeholder="last name"><br>
+            <input type="submit">
+        </form>
+
+        {{if .UserName}}
+            USER NAME: {{.UserName}}<br>
+            FIRST NAME: {{.FirstName}}<br>
+            LAST NAME: {{.LastName}}<br>
+        {{end}}
+
+        <br>
+        <h2>Go to <a href="/library">the library</a></h2>
+    </body>
+</html>
