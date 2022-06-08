@@ -6,7 +6,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"net"
 	"time"
 )
@@ -15,7 +14,7 @@ func main() {
 	// Uses net package to initiate the "tcp" server.
 	li, err := net.Listen("tcp", ":8080")
 	if err != nil {
-		log.Panicln(err)
+		panic(err)
 	}
 	defer li.Close()
 
@@ -26,7 +25,7 @@ func main() {
 		// "Accept" method will return the connection.
 		conn, err := li.Accept()
 		if err != nil {
-			log.Println(err)
+			panic(err)
 		}
 
 		fmt.Fprintln(conn, "\n***** You have 10 seconds to write",
@@ -41,9 +40,11 @@ func main() {
 // It also sets a dead line for the connection, meaning that
 // the connection will be timed out at provided time.
 func handle(conn net.Conn) {
+	defer conn.Close()
+
 	err := conn.SetDeadline(time.Now().Add(10 * time.Second))
 	if err != nil {
-		log.Println(err)
+		panic(err)
 	}
 
 	scanner := bufio.NewScanner(conn)
@@ -55,9 +56,8 @@ func handle(conn net.Conn) {
 
 		// Prints into the connection a formatted string with the value
 		// written.
-		fmt.Fprintf(conn, "Did you just said: '%v'?\n", ln)
+		fmt.Fprintf(conn, "Did you just say: '%v'?\n", ln)
 	}
-	defer conn.Close()
 
 	// Now this line will run after the connection is broken,
 	// either by the user or by the deadline.
