@@ -14,6 +14,7 @@ import (
 
 type user struct {
 	UserName  string
+	SaltPass  string
 	Password  []byte
 	FirstName string
 	LastName  string
@@ -98,10 +99,12 @@ func signUp(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		sID := uuid.New()
+		sID := uuid.New().String()
+		saltPass := uuid.New().String()
+
 		c := &http.Cookie{
 			Name:     "session",
-			Value:    sID.String(),
+			Value:    sID,
 			Path:     "/",
 			HttpOnly: true,
 			MaxAge:   sessionLength,
@@ -114,7 +117,7 @@ func signUp(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Encrypting password with bcrypt.
-		sb, err := bcrypt.GenerateFromPassword([]byte(pw), bcrypt.DefaultCost)
+		sb, err := bcrypt.GenerateFromPassword([]byte(saltPass+pw), bcrypt.DefaultCost)
 		if err != nil {
 			http.Error(w,
 				"Internal Server Error",
@@ -125,6 +128,7 @@ func signUp(w http.ResponseWriter, r *http.Request) {
 
 		u := user{
 			UserName:  ui,
+			SaltPass:  saltPass,
 			Password:  sb,
 			FirstName: fn,
 			LastName:  ln,
