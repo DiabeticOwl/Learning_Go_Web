@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+    <body>
+        <h1>Welcome to the library. Would you like to rent a book?</h1>
+        {{if .FirstName}}
+            USER NAME: {{.UserName}}<br>
+            FIRST NAME: {{.FirstName}}<br>
+            LAST NAME: {{.LastName}}<br>
+            <h1><a href="/logout">Log Out Here</a></h1>
+        {{end}}
+    </body>
+</html>
